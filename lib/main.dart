@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/demo/device_info.dart';
+import 'package:flutter_demo/model/widget_models.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,6 +16,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Flutter Demo'),
+      //注册路由表
+      routes: {
+        "device_info": (context) => const DeviceInfo(),
+      },
     );
   }
 }
@@ -28,7 +34,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var _demoList = <String>["Images", "Text", "DeviceInfo"];
+  final _demoList = <DrawListItem>[
+    DrawListItem("DeviceInfo", "device_info"),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -53,12 +61,16 @@ class _MyHomePageState extends State<MyHomePage> {
       itemCount: _demoList.length,
       itemBuilder: (context, index) {
         return ListTile(
-          leading: Icon(Icons.list),
-          title: Text(_demoList[index]),
-          trailing: new Icon(Icons.keyboard_arrow_right),
+          leading: const Icon(Icons.list),
+          title: Text(_demoList[index].title),
+          trailing: const Icon(Icons.keyboard_arrow_right),
+          onTap: () {
+            Navigator.pop(context);
+            Navigator.pushNamed(context, _demoList[index].routeName);
+          },
         );
       },
-      separatorBuilder: (context, index) => Divider(height: .0),
+      separatorBuilder: (context, index) => const Divider(height: .0),
     );
 
     //左侧抽屉导航
