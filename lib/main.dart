@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/demo/device_info.dart';
+import 'package:flutter_demo/demo/snow_man.dart';
 import 'package:flutter_demo/model/widget_models.dart';
 
 void main() {
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       //注册路由表
       routes: {
         "device_info": (context) => const DeviceInfo(),
+        "snow_man": (context) => const SnowMan(),
       },
     );
   }
@@ -35,7 +37,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final _demoList = <DrawListItem>[
-    DrawListItem("DeviceInfo", "device_info"),
+    DrawListItem("DeviceInfo", "device_info", const Icon(Icons.info)),
+    DrawListItem("SnowMan", "snow_man", const Icon(Icons.info)),
   ];
 
   @override
@@ -61,7 +64,8 @@ class _MyHomePageState extends State<MyHomePage> {
       itemCount: _demoList.length,
       itemBuilder: (context, index) {
         return ListTile(
-          leading: const Icon(Icons.list),
+          minLeadingWidth: 10.0,
+          leading: _demoList[index].icon,
           title: Text(_demoList[index].title),
           trailing: const Icon(Icons.keyboard_arrow_right),
           onTap: () {
