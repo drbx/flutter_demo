@@ -3,6 +3,8 @@ import 'package:flutter_demo/demo/device_info.dart';
 import 'package:flutter_demo/demo/snow_man.dart';
 import 'package:flutter_demo/model/widget_models.dart';
 
+import 'demo/introduction_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -16,9 +18,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo'),
+      //home: const MyHomePage(title: 'Flutter Demo'),
       //注册路由表
       routes: {
+        "/": (context) => const MyHomePage(title: 'Flutter Demo'),
+        "introduction_page": (context) => const IntroductionPage(),
         "device_info": (context) => const DeviceInfo(),
         "snow_man": (context) => const SnowMan(),
       },
@@ -38,7 +42,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final _demoList = <DrawListItem>[
     DrawListItem("DeviceInfo", "device_info", const Icon(Icons.info)),
-    DrawListItem("SnowMan", "snow_man", const Icon(Icons.info)),
+    DrawListItem("SnowMan", "snow_man", const Icon(Icons.games)),
+    DrawListItem(
+        "Introduction", "introduction_page", const Icon(Icons.description)),
   ];
 
   @override
