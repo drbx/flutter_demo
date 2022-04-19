@@ -1,6 +1,6 @@
 # flutter_demo
 
-A new Flutter project.
+A Flutter demo project for the beginner.
 
 ## Getting Started
 
